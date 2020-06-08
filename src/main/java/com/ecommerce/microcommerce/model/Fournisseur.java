@@ -1,20 +1,25 @@
 package com.ecommerce.microcommerce.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+//@Table(name="fournisseur")
+//Annotation Lombok
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString(of= {"id","nomFournisseur","produit"})
+@Builder(toBuilder = true)
 public class Fournisseur {
     @Id
     @GeneratedValue
     private Integer id;
     private String nomFournisseur;
-    private Integer idVille;
+    @OneToMany(mappedBy = "fournisseur",cascade=CascadeType.ALL)
+    private List<Produit> produit;
 
-    public Fournisseur(Integer id, String nomFournisseur, Integer idVille) {
-        this.id = id;
-        this.nomFournisseur = nomFournisseur;
-        this.idVille = idVille;
-    }
 }

@@ -17,6 +17,9 @@ public interface ProduitDao extends JpaRepository<Produit,Integer> {
 
     public Produit save(Produit product);
 
-    @Query("SELECT new com.ecommerce.microcommerce.model.Produit(id, nom, prix, prixAchat) FROM Produit p WHERE p.prix > :prixLimit and p.nom like :name")
+    @Query("SELECT p FROM Produit p WHERE p.prix > :prixLimit and p.nom like :name")
     List<Produit>  recherchePrixLimiteAndNom(@Param("prixLimit") Integer prix, @Param("name") String nom);
+
+    @Query("SELECT p FROM Produit p join p.fournisseur f WHERE f.nomFournisseur = :nomFournisseur")
+    List<Produit>  rechercheProduitParFournisseur(@Param("nomFournisseur") String nomFournisseur);
 }

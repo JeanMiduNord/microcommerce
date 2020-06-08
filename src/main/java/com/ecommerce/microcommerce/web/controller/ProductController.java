@@ -89,8 +89,16 @@ public class ProductController {
     @GetMapping(value = "/Produits/{prix}/{nom}")
     public  List<Produit> afficherPlusieursCritere(@PathVariable Integer prix, @PathVariable String nom) {
         List<Produit> p = produitDao.recherchePrixLimiteAndNom(prix,nom + "%");
-        System.out.println(p.get(0).toString());
+//        System.out.println(p.get(0).toString());
         return p;
 //        produitDao.recherchePrixLimiteAndNom(prix,nom + "%");
+    }
+
+    //Récupérer un produit par son prix et son nom
+    @GetMapping(value = "/ProduitsFournisseur/{nomFournisseur}")
+    public  List<Produit> afficherProduitParFournisseur(@PathVariable String nomFournisseur) {
+        List<Produit> p = produitDao.rechercheProduitParFournisseur(nomFournisseur);
+//        System.out.println(p.get(0).toString());
+        return p;
     }
 }
