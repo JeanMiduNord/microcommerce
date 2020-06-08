@@ -94,9 +94,10 @@ public class ProductController {
 //        produitDao.recherchePrixLimiteAndNom(prix,nom + "%");
     }
 
-    //Récupérer un produit par son prix et son nom
+    //Récupérer un produit par nom fournisseur
     @GetMapping(value = "/ProduitsFournisseur/{nomFournisseur}")
     public  List<Produit> afficherProduitParFournisseur(@PathVariable String nomFournisseur) {
+        System.out.println("recherche de :" + nomFournisseur);
         List<Produit> p = produitDao.rechercheProduitParFournisseur(nomFournisseur);
 //        System.out.println(p.get(0).toString());
         return p;

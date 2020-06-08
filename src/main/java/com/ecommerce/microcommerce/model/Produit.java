@@ -21,10 +21,10 @@ public class Produit {
     private String nom;
     private Integer prix;
     private Integer prixAchat;
-    private Integer idFournisseur;
+//    private Integer idFournisseur;
 
-//    @ManyToOne(fetch=FetchType.LAZY)
-    @ManyToOne
-    @JoinColumn (name="fournisseur", insertable = false, updatable = false)
+    @ManyToOne(fetch=FetchType.EAGER)
+//    indique à JPA de ne pas appeler la colonne FOURNISSEUR_ID mais ID_FOURNISSEUR
+    @JoinColumn (name="idFournisseur")
     private Fournisseur fournisseur;
 }

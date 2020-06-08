@@ -19,7 +19,13 @@ public class Fournisseur {
     @GeneratedValue
     private Integer id;
     private String nomFournisseur;
-    @OneToMany(mappedBy = "fournisseur",cascade=CascadeType.ALL)
+    private String nomContact;
+    /*
+    avec cette annotation une table fournisseur_produit sera crée
+       contenant les 2 clés
+
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Produit> produit;
+    */
 
 }

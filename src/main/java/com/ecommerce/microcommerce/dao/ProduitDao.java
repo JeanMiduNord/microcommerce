@@ -20,6 +20,6 @@ public interface ProduitDao extends JpaRepository<Produit,Integer> {
     @Query("SELECT p FROM Produit p WHERE p.prix > :prixLimit and p.nom like :name")
     List<Produit>  recherchePrixLimiteAndNom(@Param("prixLimit") Integer prix, @Param("name") String nom);
 
-    @Query("SELECT p FROM Produit p join p.fournisseur f WHERE f.nomFournisseur = :nomFournisseur")
+    @Query("SELECT p FROM Produit p join p.fournisseur f  WHERE f.nomFournisseur = :nomFournisseur")
     List<Produit>  rechercheProduitParFournisseur(@Param("nomFournisseur") String nomFournisseur);
 }
